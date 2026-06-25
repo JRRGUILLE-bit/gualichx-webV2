@@ -434,12 +434,10 @@ body {
 }
 
 .hero-social-plate {
+  --hero-social-icon-size: clamp(42px, 5vw, 64px);
+  --hero-social-icon-gap: clamp(12px, 1.6vw, 22px);
   grid-area: actions;
-  width: min(100%, 600px);
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(42px, 5vw, 64px);
-  align-items: stretch;
-  column-gap: clamp(14px, 2vw, 26px);
+  width: min(100%, calc(600px - var(--hero-social-icon-size) - var(--hero-social-icon-gap)));
   justify-self: start;
   position: relative;
   z-index: 2;
@@ -450,17 +448,14 @@ body {
   width: 100%;
   max-width: 100%;
   height: auto;
-  align-self: center;
 }
 
 .hero-social-plate__links {
-  display: grid;
-  grid-template-rows: repeat(3, minmax(0, 1fr));
-  align-items: center;
-  justify-items: center;
+  position: absolute;
+  inset: 0;
   min-width: 0;
-  height: 100%;
   z-index: 3;
+  pointer-events: none;
 }
 
 .hero-action {
@@ -469,21 +464,35 @@ body {
   justify-content: center;
   padding: 0;
   border: 0;
-  width: clamp(42px, 5vw, 64px);
-  height: 100%;
-  min-height: clamp(44px, 5vw, 64px);
+  width: var(--hero-social-icon-size);
+  height: var(--hero-social-icon-size);
   color: #fff;
   background: transparent;
   text-decoration: none;
   opacity: 1;
-  position: relative;
+  position: absolute;
+  left: calc(100% + var(--hero-social-icon-gap));
+  transform: translateY(-50%);
   z-index: 4;
+  pointer-events: auto;
   transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.hero-social-plate__links .hero-action:nth-child(1) {
+  top: 22%;
+}
+
+.hero-social-plate__links .hero-action:nth-child(2) {
+  top: 50%;
+}
+
+.hero-social-plate__links .hero-action:nth-child(3) {
+  top: 78%;
 }
 
 .hero-action:hover {
   opacity: 0.78;
-  transform: translateX(4px);
+  transform: translate(4px, -50%);
 }
 
 .hero-action svg {
@@ -523,8 +532,7 @@ body {
   }
 
   .hero-social-plate {
-    width: min(78vw, 520px);
-    align-items: stretch;
+    width: min(calc(78vw - var(--hero-social-icon-size) - var(--hero-social-icon-gap)), 520px);
   }
 
   .hero-rabbit {
@@ -558,9 +566,9 @@ body {
   }
 
   .hero-social-plate {
-    width: min(88vw, 460px);
-    grid-template-columns: minmax(0, 1fr) clamp(36px, 10vw, 48px);
-    column-gap: clamp(10px, 3vw, 16px);
+    --hero-social-icon-size: clamp(36px, 10vw, 48px);
+    --hero-social-icon-gap: clamp(8px, 2.4vw, 14px);
+    width: min(calc(88vw - var(--hero-social-icon-size) - var(--hero-social-icon-gap)), 460px);
   }
 
   .hero-action svg {
@@ -593,13 +601,8 @@ body {
   }
 
   .hero-social-plate {
-    grid-template-columns: minmax(0, 1fr) 36px;
-    column-gap: 10px;
-  }
-
-  .hero-action {
-    width: 36px;
-    min-height: 36px;
+    --hero-social-icon-size: 36px;
+    --hero-social-icon-gap: 8px;
   }
 
   .hero-action svg {
