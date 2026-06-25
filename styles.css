@@ -39,18 +39,11 @@ body {
   z-index: 2;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 24px;
   width: 100%;
 }
 
-.hero-header__brand {
-  display: block;
-  width: clamp(150px, 16vw, 250px);
-  line-height: 0;
-}
-
-.hero-header__brand img,
 .hero-logo,
 .hero-rabbit {
   display: block;
@@ -159,28 +152,37 @@ body {
 .hero-action {
   min-height: 66px;
   display: grid;
-  grid-template-columns: 58px 1fr;
+  grid-template-columns: minmax(0, 1fr) 58px;
   align-items: center;
-  padding: 0 28px;
+  column-gap: clamp(14px, 3vw, 28px);
+  padding: 0 24px 0 28px;
   border: 1px solid rgba(242, 242, 242, 0.92);
   color: var(--foreground);
   background: rgba(0, 0, 0, 0.34);
   text-decoration: none;
-  font-size: clamp(20px, 2vw, 32px);
-  font-weight: 800;
-  letter-spacing: 0;
+  font-family: "Anton", "Arial Narrow", Impact, sans-serif;
+  font-size: clamp(23px, 2.15vw, 36px);
+  font-weight: 400;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+  text-shadow: 1px 0 0 rgba(242, 242, 242, 0.34), -2px 2px 0 rgba(0, 0, 0, 0.82);
 }
 
 .hero-action svg {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   display: block;
+  grid-column: 2;
+  grid-row: 1;
   justify-self: center;
   fill: currentColor;
+  filter: drop-shadow(-2px 2px 0 rgba(0, 0, 0, 0.82));
 }
 
 .hero-action span {
-  justify-self: center;
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
   white-space: nowrap;
 }
 
@@ -226,10 +228,6 @@ body {
     padding: calc(14px + env(safe-area-inset-top)) clamp(16px, 5vw, 24px) calc(18px + env(safe-area-inset-bottom));
   }
 
-  .hero-header__brand {
-    width: min(42vw, 190px);
-  }
-
   .cover__content {
     justify-content: flex-start;
     align-content: start;
@@ -252,9 +250,15 @@ body {
 
   .hero-action {
     min-height: 64px;
-    grid-template-columns: 58px 1fr;
-    padding: 0 22px;
+    grid-template-columns: minmax(0, 1fr) 54px;
+    padding: 0 18px 0 20px;
     font-size: clamp(22px, 7vw, 32px);
+    letter-spacing: 0.045em;
+  }
+
+  .hero-action svg {
+    width: 34px;
+    height: 34px;
   }
 }
 
