@@ -433,35 +433,39 @@ body {
   width: clamp(300px, 38vw, 680px);
 }
 
-.hero-actions {
+.hero-social-plate {
   grid-area: actions;
-  width: min(100%, 560px);
-  display: flex;
-  flex-direction: column;
+  width: min(100%, 540px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: stretch;
-  gap: clamp(14px, 2vw, 24px);
+  column-gap: clamp(14px, 2vw, 26px);
   justify-self: start;
 }
 
-.hero-action {
+.hero-social-plate__image {
+  display: block;
   width: 100%;
   max-width: 100%;
+  height: auto;
+  align-self: center;
+}
+
+.hero-social-plate__links {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: repeat(3, 1fr);
   align-items: center;
-  justify-content: flex-start;
-  gap: clamp(16px, 2vw, 28px);
+}
+
+.hero-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0;
   border: 0;
   color: var(--foreground);
   background: transparent;
   text-decoration: none;
-  font-family: "Staatliches", "Arial Narrow", Impact, sans-serif;
-  font-size: clamp(22px, 2.1vw, 34px);
-  font-weight: 400;
-  line-height: 0.92;
-  letter-spacing: 0.065em;
-  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.88), 0 0 18px rgba(0, 0, 0, 0.82);
   transition: opacity 160ms ease, transform 160ms ease;
 }
 
@@ -476,10 +480,6 @@ body {
   display: block;
   flex: 0 0 auto;
   fill: currentColor;
-}
-
-.hero-action span {
-  white-space: nowrap;
 }
 
 .hero-action:focus-visible,
@@ -503,11 +503,11 @@ body {
   }
 
   .hero-logo,
-  .hero-actions {
+  .hero-social-plate {
     justify-self: center;
   }
 
-  .hero-actions {
+  .hero-social-plate {
     width: min(78vw, 520px);
     align-items: stretch;
   }
@@ -542,13 +542,9 @@ body {
     width: min(82vw, 430px);
   }
 
-  .hero-actions {
+  .hero-social-plate {
     width: min(88vw, 420px);
-    gap: 14px;
-  }
-
-  .hero-action {
-    font-size: clamp(20px, 6.4vw, 30px);
+    column-gap: clamp(10px, 3vw, 16px);
   }
 
   .hero-action svg {
@@ -580,12 +576,8 @@ body {
     width: min(70vw, 330px);
   }
 
-  .hero-actions {
-    gap: 10px;
-  }
-
-  .hero-action {
-    font-size: 20px;
+  .hero-social-plate {
+    column-gap: 10px;
   }
 
   .hero-action svg {
